@@ -9,7 +9,12 @@ import numpy as np
 # print(c)
 # print(d)
 
-arr = np.arange(6).reshape(2, 3)
+arr = np.arange(24).reshape(4, 6)
 print(arr)
+print(arr[::2])
+print(arr[2::])
+print(arr[-1:])
+print(arr[:-1])
+print(arr[::-1])
 
 exit(0)
