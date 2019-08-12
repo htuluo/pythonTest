@@ -15,11 +15,12 @@ print(len(xTrainData))
 # xTrainData = scX.fit_transform(xTrainData)
 # xTestData = scX.fit_transform(xTestData)
 
-clf1 = SVC(kernel='poly', random_state=0)
+clf1 = SVC(kernel='poly', random_state=0,probability=True)
 clf1.fit(xTrainData, yTrainData)
 yPredict1 = clf1.predict(xTestData)
+yPredict2 = clf1.predict_proba(xTestData)
 
-print(yPredict1)
+print(yPredict2)
 
 k = 0
 for i in range(len(yTestData)):
