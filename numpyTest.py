@@ -2,11 +2,12 @@ import numpy as np
 from sklearn import preprocessing
 
 standard_scaler = preprocessing.StandardScaler()
-array0 = np.array([[1, 2], [0, 1]])
+array0 = np.array([[0, 1], [0.5, -1]])
 scaler_fit = standard_scaler.fit(array0)
 print("Stand fit", scaler_fit)
 array0 = standard_scaler.transform(array0)
 print("Stand transform:", array0)
+min_max_scaler = preprocessing.MinMaxScaler()
 
 # normalize标准化
 # array = np.array([[1.1, 2.2, 5.5]])
@@ -20,10 +21,20 @@ print("Stand transform:", array0)
 
 
 # one_hot demo
-# one_hot_encoder = preprocessing.OneHotEncoder()
-# one_hot_encoder.fit([[0,1],[1,2],[1,3],[0,1]])
-# transform__toarray = one_hot_encoder.transform([[0, 1]]).toarray()
-# print("Transform:",transform__toarray)
+one_hot_encoder = preprocessing.OneHotEncoder(categories="auto")
+one_hot_encoder.fit([[0, 1], [1, 2], [1, 3], [0, 1]])
+transform__toarray = one_hot_encoder.transform([[0, 1]]).toarray()
+print("One hot Transform:", transform__toarray)
+
+
+def get_one_hot(val):
+    hot_encoder = preprocessing.OneHotEncoder(categories='auto', sparse=False, handle_unknown='ignore')
+    hot_encoder.fit(np.array([[100, 200, 300]]).reshape(-1, 1))
+    return hot_encoder.transform([[val]])
+
+
+hot = get_one_hot(400)
+print("get:", hot)
 
 # labelEncoder
 # label_encoder = preprocessing.LabelEncoder()
