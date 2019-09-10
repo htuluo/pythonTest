@@ -27,15 +27,22 @@ transform__toarray = one_hot_encoder.transform([[0, 1]]).toarray()
 print("One hot Transform:", transform__toarray)
 
 
+
 def get_one_hot(val):
     hot_encoder = preprocessing.OneHotEncoder(categories='auto', sparse=False, handle_unknown='ignore')
     hot_encoder.fit(np.array([[100, 200, 300]]).reshape(-1, 1))
     return hot_encoder.transform([[val]])
 
+def get_one_hot2(val):
+    hot_encoder = preprocessing.OneHotEncoder(categories='auto', sparse=False, handle_unknown='ignore')
+    hot_encoder.fit(np.array([[100, 200, 300]]).reshape(-1, 1))
+    return hot_encoder.transform([[val]])
 
-hot = get_one_hot(400)
-print("get:", hot)
-
+#
+# hot = get_one_hot(400)
+# print("get:", hot)
+# r =np.arange(1, 86)
+# print("ddd", r)
 # labelEncoder
 # label_encoder = preprocessing.LabelEncoder()
 # fit = label_encoder.fit([1, 222, 44, 228, 878])
